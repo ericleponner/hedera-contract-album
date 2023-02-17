@@ -1,0 +1,10 @@
+{
+  "name": "hedera-contract-album",
+  "version": "1.0.0",
+  "dependencies": {
+    "solc": "^0.8.18"
+  },
+  "scripts": {
+    "hello_world:build": "cd src/main/java/hello_world; solcjs --bin HelloWorld.sol; solcjs --version > HelloWorld.ver"
+  }
+}
