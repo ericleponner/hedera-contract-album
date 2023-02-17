@@ -6,9 +6,16 @@ import io.github.cdimascio.dotenv.Dotenv;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+import java.util.Date;
 
 public class Utils {
 
+    public static void main(String[] args) {
+        System.out.println(System.getProperty("user.dir"));
+    }
 
     public static void deploy(String baseName, String contractName,
                               ContractFunctionParameters params,
@@ -53,6 +60,12 @@ public class Utils {
             }
         }
 
+        // 5) Logs deployment
+        final Path logPath = Path.of(System.getProperty("user.dir"), "deployment.log");
+        final String logRecord = new Date() + " " + hederaNetwork + " " + contractId + " " + contractName + "\n";
+        Files.writeString(logPath,logRecord, StandardOpenOption.APPEND);
+
+        // 6) UX
         if (receipt.status == Status.SUCCESS) {
             System.out.println(baseName + ".sol deployed successfully to contract " + contractId + " (" + hederaNetwork + ")");
         } else {
