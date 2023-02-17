@@ -15,7 +15,7 @@ public class Utils {
         assert(contractName != null);
 
         // 1) Reads byte code and compiler version
-        final String byteCode = readResourceString(baseName + "_sol_" + baseName + ".bin", klass);
+        final String byteCode = readResourceString(baseName + "_sol_" + contractName + ".bin", klass);
         final String compilerVersion = readResourceString(baseName + ".ver", klass).trim();
 
         // 2) Creates Client
@@ -46,11 +46,6 @@ public class Utils {
         } else {
             System.out.println(baseName + ".sol deployment failed with status " + receipt.status);
         }
-//
-//        System.out.println(operatorId);
-//        System.out.println(operatorKey);
-//        System.out.println(compilerVersion);
-//        System.out.println(byteCode);
     }
 
     private static String readResourceString(String resourceName, Class<?> klass) throws IOException {

@@ -5,6 +5,7 @@
     "solc": "^0.8.18"
   },
   "scripts": {
-    "hello_world:build": "cd src/main/java/hello_world; solcjs --bin HelloWorld.sol; solcjs --version > HelloWorld.ver"
+    "build:hello_world": "cd src/main/java/hello_world; solcjs --bin HelloWorld.sol; solcjs --version > HelloWorld.ver",
+    "build:hts": "cd src/main/java/hts; solcjs --bin HTSv2.sol; solcjs --version > HTSv2.ver"
   }
 }
