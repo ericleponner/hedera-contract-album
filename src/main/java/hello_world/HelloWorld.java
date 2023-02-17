@@ -1,5 +1,6 @@
 package hello_world;
 
+import com.hedera.hashgraph.sdk.ContractFunctionParameters;
 import common.Utils;
 
 public class HelloWorld {
@@ -9,6 +10,8 @@ public class HelloWorld {
     }
 
     public static void deploy() throws Exception {
-        Utils.deploy("HelloWorld", "HelloWorld", HelloWorld.class);
+        final ContractFunctionParameters params = new ContractFunctionParameters()
+                .addString("Hello World");
+        Utils.deploy("HelloWorld", "HelloWorld", params, HelloWorld.class);
     }
 }
