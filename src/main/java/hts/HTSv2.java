@@ -9,7 +9,7 @@ public class HTSv2 {
     }
 
     public static void deploy() throws Exception {
-        Utils.deploy("HTSv2", "HTS", null, HTSv2.class);
+        Utils.deploy("HTSv2", "HTS", null, null,  HTSv2.class);
     }
 
 }

@@ -10,7 +10,10 @@ import java.nio.charset.StandardCharsets;
 public class Utils {
 
 
-    public static void deploy(String baseName, String contractName, ContractFunctionParameters params, Class<?> klass) throws Exception {
+    public static void deploy(String baseName, String contractName,
+                              ContractFunctionParameters params,
+                              ContractExecuteTransaction[] executions,
+                              Class<?> klass) throws Exception {
         assert(baseName != null);
         assert(contractName != null);
 
@@ -32,7 +35,7 @@ public class Utils {
         final ContractCreateFlow createContract = new ContractCreateFlow()
                 .setBytecode(byteCode)
                 .setContractMemo(memo)
-                .setGas(4_000_000);
+                .setGas(2_000_000);
         if (params != null) {
             createContract.setConstructorParameters(params);
         }
@@ -40,6 +43,15 @@ public class Utils {
         final TransactionResponse response = createContract.execute(client);
         final TransactionReceipt receipt = response.getReceipt(client);
         final ContractId contractId = receipt.contractId;
+
+        // 4) Executes contract
+        if (executions != null) {
+            for (ContractExecuteTransaction e : executions) {
+                e.setContractId(contractId);
+                e.setGas(2_000_000);
+                e.execute(client);
+            }
+        }
 
         if (receipt.status == Status.SUCCESS) {
             System.out.println(baseName + ".sol deployed successfully to contract " + contractId + " (" + hederaNetwork + ")");
