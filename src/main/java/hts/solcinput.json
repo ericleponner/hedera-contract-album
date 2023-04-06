@@ -1,0 +1,43 @@
+{
+  "language": "Solidity",
+  "sources":
+  {
+    "HTSv2.sol":
+    {
+      "urls":
+      [
+        "HTSv2.sol"
+      ]
+    },
+    "HederaTokenService.sol":
+    {
+      "urls":
+      [
+        "HederaTokenService.sol"
+      ]
+    },
+    "IHederaTokenService.sol":
+    {
+      "urls":
+      [
+        "IHederaTokenService.sol"
+      ]
+    },
+    "HederaResponseCodes.sol":
+    {
+      "urls":
+      [
+        "HederaResponseCodes.sol"
+      ]
+    }
+  },
+  "settings": {
+    "outputSelection": {
+      "*": {
+        "*": [
+          "*"
+        ]
+      }
+    }
+  }
+}
