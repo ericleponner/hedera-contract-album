@@ -1,10 +1,15 @@
 package common;
 
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonReader;
+
 import com.hedera.hashgraph.sdk.*;
 import io.github.cdimascio.dotenv.Dotenv;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.StringReader;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -25,15 +30,15 @@ public class Utils {
         assert(contractName != null);
 
         // 1) Reads byte code and compiler version
-        final String byteCode = readResourceString(baseName + "_sol_" + contractName + ".bin", klass);
-        final String compilerVersion = readResourceString(baseName + ".ver", klass).trim();
+        final String byteCode = readResourceString("artifacts/" + contractName + ".bin", klass);
+        final String compilerVersion = readCompilerVersionFromMetadata("artifacts/" + contractName + "_meta.json", klass).trim();
 
         // 2) Creates Client
         final Client client = createClient();
         final String hederaNetwork = getHederaNetwork();
 
         // 3) Deploys contract
-        final String memo = baseName + ".sol + solcjs " + compilerVersion;
+        final String memo = baseName + ".sol + solc " + compilerVersion;
         final ContractCreateFlow createContract = new ContractCreateFlow()
                 .setBytecode(byteCode)
                 .setContractMemo(memo)
@@ -163,6 +168,16 @@ public class Utils {
             bytes = is.readAllBytes();
         }
         return new String(bytes, StandardCharsets.UTF_8);
+    }
+
+    private static String readCompilerVersionFromMetadata(String resourceName, Class<?> klass) throws IOException {
+        final String result;
+        final String jsonText = readResourceString(resourceName, klass);
+        try (final JsonReader jsonReader = Json.createReader(new StringReader(jsonText))) {
+            final JsonObject o = jsonReader.readObject();
+            result = o.get("compiler").asJsonObject().getString("version");
+        }
+        return result;
     }
 
     private static void writeToLog(String record) throws Exception {
