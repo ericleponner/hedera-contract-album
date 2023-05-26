@@ -30,4 +30,8 @@ contract HTS is HederaTokenService {
             revert ("Dissociate Failed");
         }
     }
+
+    function brokenDissociate() external pure {
+        revert ("This dissociate is broken");
+    }
 }

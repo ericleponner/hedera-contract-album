@@ -32,8 +32,12 @@ public class HTSv2 {
                         .addAddress(accountId.toSolidityAddress())
                         .addInt64(100));
 
+        ContractExecuteTransaction brokenDissociate = new ContractExecuteTransaction()
+                .setGas(2_000_000)
+                .setFunction("brokenDissociate");
+
         final ContractExecuteTransaction[] executions = new ContractExecuteTransaction[] {
-                associateToken, tokenTransfer
+                associateToken, tokenTransfer, brokenDissociate
         };
 
         Utils.deploy("HTSv2", "HTS", null, executions,  HTSv2.class);
