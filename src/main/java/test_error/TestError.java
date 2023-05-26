@@ -1,10 +1,7 @@
 package test_error;
 
 import com.hedera.hashgraph.sdk.ContractExecuteTransaction;
-import com.hedera.hashgraph.sdk.ContractFunctionParameters;
 import common.Utils;
-
-import java.math.BigInteger;
 
 public class TestError {
 
@@ -16,11 +13,8 @@ public class TestError {
         final ContractExecuteTransaction execution1 = new ContractExecuteTransaction()
                 .setFunction("revertSimpleError");
 
-        final ContractFunctionParameters revertParams = new ContractFunctionParameters()
-                .addString("Alexandre Dumas")
-                .addInt256(BigInteger.valueOf(-20));
         final ContractExecuteTransaction execution2 = new ContractExecuteTransaction()
-                .setFunction("revertComplexError", revertParams);
+                .setFunction("revertComplexError");
 
         final ContractExecuteTransaction[] executions = new ContractExecuteTransaction[] {
                 execution1, execution2

@@ -5,11 +5,9 @@
     "solc": "^0.8.18"
   },
   "scripts": {
-    "build:hello_world": "cd src/main/java/hello_world; solcjs --bin HelloWorld.sol; solcjs --version > HelloWorld.ver",
-    "build:hts": "cd src/main/java/hts; solcjs --bin HTSv2.sol; solcjs --version > HTSv2.ver",
-    "build:test_error": "cd src/main/java/test_error; solcjs --bin TestError.sol; solcjs --version > TestError.ver",
-    "solcoutput:hts": "cd src/main/java/hts; solc --standard-json solcinput.json > solcoutput.json",
-    "solcoutput:test_error": "cd src/main/java/test_error; solc --standard-json solcinput.json > solcoutput.json",
-    "metadata:test_error": "cd src/main/java/test_error; solc --metadata TestError.sol > metadata.json"
+    "build:hello_world": "cd src/main/java/hello_world; solc -o ./artifacts --metadata --bin --overwrite HelloWorld.sol",
+    "build:hts": "cd src/main/java/hts; solc -o ./artifacts --metadata --bin --overwrite HTSv2.sol",
+    "build:test_error": "cd src/main/java/test_error; solc -o ./artifacts --metadata --bin --overwrite TestError.sol",
+    "build:all": "npm run build:hello_world && npm run build:hts && npm run build:test_error"
   }
 }
