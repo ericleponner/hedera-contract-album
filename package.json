@@ -7,6 +7,9 @@
   "scripts": {
     "build:hello_world": "cd src/main/java/hello_world; solcjs --bin HelloWorld.sol; solcjs --version > HelloWorld.ver",
     "build:hts": "cd src/main/java/hts; solcjs --bin HTSv2.sol; solcjs --version > HTSv2.ver",
-    "solcoutput:hts": "cd src/main/java/hts; solc --standard-json solcinput.json > solcoutput.json"
+    "build:test_error": "cd src/main/java/test_error; solcjs --bin TestError.sol; solcjs --version > TestError.ver",
+    "solcoutput:hts": "cd src/main/java/hts; solc --standard-json solcinput.json > solcoutput.json",
+    "solcoutput:test_error": "cd src/main/java/test_error; solc --standard-json solcinput.json > solcoutput.json",
+    "metadata:test_error": "cd src/main/java/test_error; solc --metadata TestError.sol > metadata.json"
   }
 }
