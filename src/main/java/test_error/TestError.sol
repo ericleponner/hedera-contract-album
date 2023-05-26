@@ -12,8 +12,8 @@ contract TestError {
         revert SimpleError();
     }
 
-    function revertComplexError(string memory name, int256 temperature) public pure {
-        revert ComplexError(name, temperature);
+    function revertComplexError() public pure {
+        revert ComplexError("Alexandre Dumas", 22);
     }
 
 }
