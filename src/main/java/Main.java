@@ -5,6 +5,8 @@ import test_error.TestError;
 public class Main {
 
     public static void main(String[] args) throws Exception {
+        HelloWorld.deploy();
+        HTSv2.deploy();
         TestError.deploy();
     }
 }
