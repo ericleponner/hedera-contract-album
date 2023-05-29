@@ -8,6 +8,7 @@
     "build:hello_world": "cd src/main/java/hello_world; solc -o ./artifacts --metadata --bin --overwrite HelloWorld.sol",
     "build:hts": "cd src/main/java/hts; solc -o ./artifacts --metadata --bin --overwrite HTSv2.sol",
     "build:test_error": "cd src/main/java/test_error; solc -o ./artifacts --metadata --bin --overwrite TestError.sol",
-    "build:all": "npm run build:hello_world && npm run build:hts && npm run build:test_error"
+    "build:test_event": "cd src/main/java/test_event; solc -o ./artifacts --metadata --bin --overwrite TestEvent.sol",
+    "build:all": "npm run build:hello_world && npm run build:hts && npm run build:test_error && npm run build:test_event"
   }
 }
