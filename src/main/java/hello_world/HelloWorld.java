@@ -3,6 +3,8 @@ package hello_world;
 import com.hedera.hashgraph.sdk.ContractExecuteTransaction;
 import com.hedera.hashgraph.sdk.ContractFunctionParameters;
 import common.Utils;
+import common.Verify;
+import java.util.Collections;
 
 public class HelloWorld {
 
@@ -26,5 +28,9 @@ public class HelloWorld {
         };
 
         Utils.deploy("HelloWorld", "HelloWorld", params, executions, HelloWorld.class);
+    }
+
+    public static void verify() throws Exception {
+        Verify.run("0.0.52787", "HelloWorld", "HelloWorld", Collections.emptyList(), HelloWorld.class);
     }
 }

@@ -161,7 +161,7 @@ public class Utils {
         return dotEnv.get("HEDERA_NETWORK");
     }
 
-    private static String readResourceString(String resourceName, Class<?> klass) throws IOException {
+    public static String readResourceString(String resourceName, Class<?> klass) throws IOException {
         final byte[] bytes;
         try (InputStream is = klass.getResourceAsStream(resourceName)) {
             assert (is != null);
