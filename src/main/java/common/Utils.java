@@ -42,7 +42,8 @@ public class Utils {
         final ContractCreateFlow createContract = new ContractCreateFlow()
                 .setBytecode(byteCode)
                 .setContractMemo(memo)
-                .setGas(2_000_000);
+                .setGas(2_000_000)
+                .setMaxChunks(40);
         if (params != null) {
             createContract.setConstructorParameters(params);
         }
