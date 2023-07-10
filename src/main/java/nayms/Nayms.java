@@ -14,24 +14,13 @@ public class Nayms {
     }
 
     public static void deploy() throws Exception {
+        final ContractExecuteTransaction[] executions = new ContractExecuteTransaction[] {};
         final ContractFunctionParameters params = new ContractFunctionParameters()
-                .addString("Hello World");
-        final ContractFunctionParameters updateParams1 = new ContractFunctionParameters()
-                .addString("Bonjour tout le Monde");
-        final ContractExecuteTransaction execution1 = new ContractExecuteTransaction()
-                .setFunction("update", updateParams1);
-        final ContractFunctionParameters updateParams2 = new ContractFunctionParameters()
-                .addString("Buenos Dias");
-        final ContractExecuteTransaction execution2 = new ContractExecuteTransaction()
-                .setFunction("update", updateParams2);
-        final ContractExecuteTransaction[] executions = new ContractExecuteTransaction[] {
-                execution1, execution2
-        };
-
-        Utils.deploy("HelloWorld", "HelloWorld", params, executions, Nayms.class);
+                .addString("0x0000000000000000000000000000000000000413"); // 0.0.1043
+        Utils.deploy("Nayms", "Nayms", params, executions, Nayms.class);
     }
 
     public static void verify() throws Exception {
-        Verify.run("0.0.52787", "HelloWorld", "HelloWorld", Collections.emptyList(), Nayms.class);
+        Verify.run("0.0.1043", "Nayms", "Nayms", Collections.emptyList(), Nayms.class);
     }
 }
