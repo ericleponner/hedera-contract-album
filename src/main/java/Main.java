@@ -1,6 +1,8 @@
+import dao.DAO;
 import hello_swarm.HelloSwarm;
 import hello_world.HelloWorld;
 import hts.HTSv2;
+import nayms.Nayms;
 import test_error.TestError;
 import test_event.TestEvent;
 
@@ -12,5 +14,7 @@ public class Main {
         HTSv2.deploy();
         TestError.deploy();
         TestEvent.deploy();
+        Nayms.deploy();
+        DAO.deploy();
     }
 }
