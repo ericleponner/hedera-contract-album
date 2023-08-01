@@ -140,6 +140,10 @@ public class Utils {
         Client client = Client.forName(hederaNetwork);
         client.setOperator(operatorId, operatorKey);
 
+        System.out.println("Connecting to " + hederaNetwork);
+        System.out.println("Operator Account Id: " + operatorId);
+        System.out.println("Operator Public Key: " + operatorKey.getPublicKey());
+
         return client;
     }
 
