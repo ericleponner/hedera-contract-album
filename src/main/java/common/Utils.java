@@ -14,6 +14,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
+import java.time.Duration;
 import java.util.Date;
 
 public class Utils {
@@ -139,6 +140,9 @@ public class Utils {
         String hederaNetwork = dotEnv.get("HEDERA_NETWORK");
         Client client = Client.forName(hederaNetwork);
         client.setOperator(operatorId, operatorKey);
+        // Not sure the two lines below are really needed ... but who knows ...
+        client.setRequestTimeout(client.getRequestTimeout().multipliedBy(3));
+        client.setMaxAttempts(client.getMaxAttempts() * 3);
 
         System.out.println("Connecting to " + hederaNetwork);
         System.out.println("Operator Account Id: " + operatorId);
