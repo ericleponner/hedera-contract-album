@@ -1,0 +1,1 @@
+{"language":"Solidity","sources":{"HelloWorld.sol":{"content":"pragma solidity ^0.8.17;\n\ncontract HelloWorld {\n\n   string public message;\n\n   constructor(string memory initMessage) {\n\n      message = initMessage;\n   }\n\n   function update(string memory newMessage) public {\n      message = newMessage;\n   }\n}\n\n"}}}
