@@ -5,6 +5,11 @@ import com.hedera.hashgraph.sdk.ContractExecuteTransaction;
 import com.hedera.hashgraph.sdk.ContractFunctionParameters;
 import com.hedera.hashgraph.sdk.TokenId;
 import common.Utils;
+import common.VerifyV2;
+import hello_world.HelloWorld;
+
+import java.util.Arrays;
+import java.util.Collections;
 
 public class HTSv2 {
 
@@ -41,6 +46,16 @@ public class HTSv2 {
         };
 
         Utils.deploy("HTSv2", "HTS", null, executions,  HTSv2.class);
+    }
+
+    public static void verifyV2() throws Exception {
+        VerifyV2.run("0.0.2665", "HTSv2", "HTS", "0.8.17+commit.8df45f5f",
+                Arrays.asList(
+                        "HTSv2",
+                        "HederaResponseCodes",
+                        "HederaTokenService",
+                        "IHederaTokenService"
+                ), HTSv2.class);
     }
 
 }
