@@ -5,6 +5,7 @@ import hts.HTSv2;
 import nayms.Nayms;
 import test_error.TestError;
 import test_event.TestEvent;
+import uniswap_v3.UniSwap_V3;
 
 public class Main {
 
@@ -16,5 +17,6 @@ public class Main {
         TestEvent.deploy();
         Nayms.deploy();
         DAO.deploy();
+        UniSwap_V3.deploy();
     }
 }
