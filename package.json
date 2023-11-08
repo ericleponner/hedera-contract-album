@@ -7,6 +7,7 @@
   "scripts": {
     "build:hello_world": "cd src/main/java/hello_world; solc -o ./artifacts --metadata --bin --overwrite HelloWorld.sol",
     "build:hello_swarm": "cd src/main/java/hello_swarm; solc -o ./artifacts --metadata --bin --overwrite --metadata-hash swarm HelloSwarm.sol",
+    "build:hello_library": "cd src/main/java/hello_library; solc -o ./artifacts --metadata --bin --overwrite HelloLibrary.sol",
     "build:hts": "cd src/main/java/hts; solc -o ./artifacts --metadata --bin --overwrite HTSv2.sol",
     "build:test_error": "cd src/main/java/test_error; solc -o ./artifacts --metadata --bin --overwrite TestError.sol",
     "build:test_event": "cd src/main/java/test_event; solc -o ./artifacts --metadata --bin --overwrite TestEvent.sol",
