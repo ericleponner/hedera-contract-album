@@ -8,7 +8,7 @@ error ComplexError(string name, int256 temperature);
 
 contract TestEvent {
 
-    event FlightEvent(string phase, int airspeed, int verticalSpeed);
+    event FlightEvent(string indexed phase, int airspeed, int verticalSpeed);
 
     function flight() public {
         emit FlightEvent("Holding point", 0, 0);
