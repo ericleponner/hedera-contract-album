@@ -136,7 +136,7 @@ public class Utils {
         final String envPath = System.getProperty("user.home") + "/.env";
         final Dotenv dotEnv = Dotenv.configure().directory(envPath).load();
         AccountId operatorId = AccountId.fromString(dotEnv.get("OPERATOR_ACCOUNT_ID"));
-        PrivateKey operatorKey = PrivateKey.fromString(dotEnv.get("OPERATOR_KEY"));
+        PrivateKey operatorKey = PrivateKey.fromStringDER(dotEnv.get("OPERATOR_KEY"));
         String hederaNetwork = dotEnv.get("HEDERA_NETWORK");
         Client client = Client.forName(hederaNetwork);
         client.setOperator(operatorId, operatorKey);
