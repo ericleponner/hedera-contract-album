@@ -59,4 +59,9 @@ contract AbiTest {
     function updateSampleBytes8(bytes8 newValue) public {
         sampleBytes8 = newValue;
     }
+
+    function multiply(int v1, int v2) public pure returns (int) {
+        return v1 * v2;
+    }
+
 }
