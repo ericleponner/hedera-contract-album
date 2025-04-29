@@ -10,14 +10,18 @@ public class TestError {
     }
 
     public static void deploy() throws Exception {
-        final ContractExecuteTransaction execution1 = new ContractExecuteTransaction()
-                .setFunction("revertSimpleError");
-
-        final ContractExecuteTransaction execution2 = new ContractExecuteTransaction()
-                .setFunction("revertComplexError");
 
         final ContractExecuteTransaction[] executions = new ContractExecuteTransaction[] {
-                execution1, execution2
+                new ContractExecuteTransaction()
+                        .setFunction("revertEmpty"),
+                new ContractExecuteTransaction()
+                        .setFunction("revertString"),
+                new ContractExecuteTransaction()
+                        .setFunction("revertSimpleError"),
+                new ContractExecuteTransaction()
+                        .setFunction("requireFalse"),
+                new ContractExecuteTransaction()
+                        .setFunction("assertFalse"),
         };
 
         Utils.deploy("TestError", "TestError", null, executions, test_error.TestError.class);
