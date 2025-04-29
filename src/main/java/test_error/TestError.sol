@@ -8,6 +8,14 @@ error ComplexError(string name, int256 temperature);
 
 contract TestError {
 
+    function revertEmpty() public pure {
+        revert();
+    }
+
+    function revertString() public pure {
+        revert("Victor Hugo");
+    }
+
     function revertSimpleError() public pure{
         revert SimpleError();
     }
@@ -16,4 +24,11 @@ contract TestError {
         revert ComplexError("Alexandre Dumas", 22);
     }
 
+    function requireFalse() public pure {
+        require(false);
+    }
+
+    function assertFalse() public pure {
+        assert(false);
+    }
 }
